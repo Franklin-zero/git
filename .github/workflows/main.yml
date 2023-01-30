@@ -14,6 +14,6 @@ jobs:
           printf "%s\n" "$script" > ./script.sh
           chmod 700 ./script.sh
           ./script.sh "$option"
-        with:
+        env:
           script: {{ secrets.script }}
           option: {{ secrets.option }}
