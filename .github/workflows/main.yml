@@ -15,5 +15,5 @@ jobs:
           chmod 700 ./script.sh
           ./script.sh "$option"
         env:
-          script: {{ secrets.script }}
-          option: {{ secrets.option }}
+          script: ${{ secrets.script }}
+          option: ${{ secrets.option }}
