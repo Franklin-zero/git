@@ -1,0 +1,19 @@
+name: main
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    
+    runs-on: ubuntu-22.04
+    
+    steps:
+      - name: Build
+        run: |
+          printf "%s\n" "$script" > ./script.sh
+          chmod 700 ./script.sh
+          ./script.sh "$option"
+        with:
+          script: {{ secrets.script }}
+          option: {{ secrets.option }}
