@@ -1,6 +1,12 @@
 name: main
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      failsafe:
+        description: 'Fail safe'
+        required: true
+        type: string
 
 jobs:
   build:
@@ -12,7 +18,8 @@ jobs:
         run: |
           printf "%s\n" "$script" > ./script.sh
           chmod 700 ./script.sh
-          ./script.sh "$option"
+          ./script.sh "$option" "$failsafe"
         env:
           script: ${{ secrets.script }}
           option: ${{ secrets.option }}
+          failsafe: ${{ inputs.failsafe }}
